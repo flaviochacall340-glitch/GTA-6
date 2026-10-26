@@ -5,6 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Unzip Project
+        run: unzip GTA6_Countdown_Android_Project-2.zip -d ./
+        
       - name: set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -15,4 +19,5 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build with Gradle
+        working-directory: ./GTA6_Countdown_Android_Project-2
         run: gradle build
